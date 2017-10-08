@@ -11,6 +11,36 @@
     <properties>
         <spring.version>4.3.10.RELEASE</spring.version>
     </properties>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <build><filters><filter>env_profiles/local.properties</filter></filters></build>
+            <!--默认启用的是本地环境配置 -->
+            <activation><activeByDefault>true</activeByDefault></activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <build><filters><filter>env_profiles/dev.properties</filter></filters></build>
+        </profile>
+        <profile>
+            <id>test</id>
+            <build><filters><filter>env_profiles/test.properties</filter></filters></build>
+        </profile>
+        <profile>
+            <id>product</id>
+            <build><filters><filter>env_profiles/product.properties</filter></filters></build>
+        </profile>
+    </profiles>
+    <!-- 指定资源文件目录，其中的文件内变量会被profile中定义的替换  -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <finalName>demo</finalName>
+    </build>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>
@@ -41,7 +71,4 @@
             <version>1.7.9</version>
         </dependency>
     </dependencies>
-    <build>
-        <finalName>demo</finalName>
-    </build>
 </project>
