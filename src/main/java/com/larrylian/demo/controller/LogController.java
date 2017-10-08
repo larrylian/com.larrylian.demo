@@ -20,4 +20,21 @@ public class LogController {
         log.debug("这是个debug日志");
         return "日志打印成功";
     }
+    @ResponseBody
+    @RequestMapping("log/logger")
+    public String logger() {
+        Logger log2 = LoggerFactory.getLogger("com.larrylian.testLogger");
+        Logger logController = LoggerFactory.getLogger("com.larrylian.demo.controller.LogController");
+        log2.info("其他Logger日志测试");
+        logController.info("logController 测试");
+        System.out.println("log2 : " + log2.toString());
+        System.out.println("logConntroller : " + logController);
+        System.out.println("log : " + log);
+        if (logController == log) {
+            System.out.println("同个命名的logger是单例");
+        } else {
+            System.out.println("同个命名的logger不是单例");
+        }
+        return "logger测试成功";
+    }
 }
