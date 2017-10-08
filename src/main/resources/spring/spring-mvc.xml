@@ -41,6 +41,13 @@
         </property>
         <property name="contentType" value="text/html;charset=UTF-8"></property>
     </bean>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <!-- 对静态资源文件的访问-->
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
