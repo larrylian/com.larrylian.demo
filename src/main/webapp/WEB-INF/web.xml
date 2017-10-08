@@ -6,10 +6,6 @@
         <param-name>webAppRootKey</param-name>
         <param-value>web.root</param-value>
     </context-param>
-    <context-param>
-        <param-name>logLevel</param-name>
-        <param-value>debug</param-value>
-    </context-param>
     <!-- log4j配置，文件路径，因为是跟随项目启动 -->
     <context-param>
         <param-name>log4jConfigLocation</param-name>
